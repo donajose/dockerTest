@@ -11,4 +11,3 @@ matrix:
       dotnet: 1.0.0-preview2-1-003177
       mono: none
       env: DOTNETCORE=1
-  - if [ "$TRAVIS_BRANCH" == "master" ]; then ./deploy.sh; fi
