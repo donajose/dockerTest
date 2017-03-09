@@ -15,4 +15,4 @@ script:
 
   - chmod +x ./scripts/build.sh
 
-  - cd scripts && ./build.sh
+  - ./scripts/build.sh
