@@ -20,7 +20,11 @@ before_install:
 - openssl aes-256-cbc -K $encrypted_1e09b1a8aab1_key -iv $encrypted_1e09b1a8aab1_iv
   -in ssh_host_rsa_key.enc -out ssh_host_rsa_key -d
 after_success:
-- scp blah root@138.197.211.203/home/dona/
+- mkdir build
+- mv * build
+- tar -czf pack.tgz build
+- export SSHPASS=$DEPLOY_PASS
+- sshpass -e scp pack.tgz root@138.197.211.203:/home/dona/
 env:
   global:
   - secure: R2i1/y3Jpz9HGfsUNFUj5b23iN2czsCT9r1l4xhUOsB6dBMwAKSOFslr0IUgzLsqHrUwFh0wgzEYo0DFX79NZZ5KA6TcMp3BtZAv2di3gBk6GFMy9rovfgjdf9aZkO62/k6yfG54xsMrshqD9BEt0dDmLLv85wiuA80bwBoBbGwXpCr6r3ssqeV1JDdmGLu/uXKTuSWw9ueypXd6apFk5vkV6CKq1ASqSg2jwcXNQUeBetCGO7QgZcV+whId1FYXo2ZPiGjAPxJC6r/QoUHkbuFmqo4tJyKPkUfh0U9vEgTDwkURC4q1JUqs1X3Kj6FdjHJj5XpKgpFtu/B7+4kv0wdTiAv1oPim3IjtmdBWoGolBv+PFMq/U/fDuKu/jm2FEnEa5LVOJBSQ2RMPBHpvPElmCtv+OZtD5qA6w/yGfSaYOZG3Se4/k92Q8Qy1F+hSFEyVdTyqfrP/kxQz2cGVQZxiNJPSqVX0OSPrFD3P1T+2jd4mGf+52E/qexFYDQhNEkaS2mvEev3Bu0GEqlshE9DwCoNoVAqUfpefuam4vyrsSvudoqDsKH43SdV3yBL++TPvEPo/DP1DZfb2kZ7i20xEluFXP+QQIkhz2qchFkMuAzDpEXHKF+mKk/NxVMEHJ9YqJfD4ZOElGqT9W3WyuZ5712y/saX3ix8E8D7VC0g=
