@@ -1,5 +1,9 @@
 sudo: required
 language: csharp
+addons:
+  apt:
+    packages:
+    - sshpass	
 solution: src/dockerTest.sln
 services:
 - docker
